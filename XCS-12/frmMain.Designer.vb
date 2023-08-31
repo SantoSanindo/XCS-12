@@ -59,14 +59,17 @@ Partial Class frmMain
         Me.Label72 = New System.Windows.Forms.Label()
         Me.Ethernet = New System.Windows.Forms.PictureBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Text2 = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Image2 = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Barcode_Comm = New System.IO.Ports.SerialPort(Me.components)
         Me.RFID_Comm = New System.IO.Ports.SerialPort(Me.components)
         Me.Cmd_Refresh = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.CMD_Read_Inputs = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.Image1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -366,6 +369,7 @@ Partial Class frmMain
         '
         'Txt_Msg
         '
+        Me.Txt_Msg.BackColor = System.Drawing.Color.LightGray
         Me.Txt_Msg.Location = New System.Drawing.Point(6, 131)
         Me.Txt_Msg.Multiline = True
         Me.Txt_Msg.Name = "Txt_Msg"
@@ -405,6 +409,9 @@ Partial Class frmMain
         '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.CMD_Read_Inputs)
+        Me.GroupBox7.Controls.Add(Me.Label10)
+        Me.GroupBox7.Controls.Add(Me.Label9)
         Me.GroupBox7.Controls.Add(Me.Label75)
         Me.GroupBox7.Controls.Add(Me.lbl_localip)
         Me.GroupBox7.Controls.Add(Me.lbl_localhostname)
@@ -472,8 +479,8 @@ Partial Class frmMain
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.Label9)
+        Me.GroupBox3.Controls.Add(Me.Text2)
+        Me.GroupBox3.Controls.Add(Me.Label12)
         Me.GroupBox3.Controls.Add(Me.Image2)
         Me.GroupBox3.Location = New System.Drawing.Point(449, 129)
         Me.GroupBox3.Name = "GroupBox3"
@@ -481,23 +488,23 @@ Partial Class frmMain
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
         '
-        'TextBox1
+        'Text2
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(103, 555)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox1.TabIndex = 30
+        Me.Text2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Text2.Location = New System.Drawing.Point(103, 555)
+        Me.Text2.Name = "Text2"
+        Me.Text2.Size = New System.Drawing.Size(100, 26)
+        Me.Text2.TabIndex = 30
         '
-        'Label9
+        'Label12
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(6, 558)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(91, 20)
-        Me.Label9.TabIndex = 29
-        Me.Label9.Text = "%MW101 - "
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(6, 558)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(91, 20)
+        Me.Label12.TabIndex = 29
+        Me.Label12.Text = "%MW101 - "
         '
         'Image2
         '
@@ -507,6 +514,17 @@ Partial Class frmMain
         Me.Image2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Image2.TabIndex = 1
         Me.Image2.TabStop = False
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 50
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 3000
+        '
+        'Barcode_Comm
+        '
         '
         'Cmd_Refresh
         '
@@ -520,6 +538,38 @@ Partial Class frmMain
         Me.Cmd_Refresh.Text = "Refresh"
         Me.Cmd_Refresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Cmd_Refresh.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(275, 36)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(150, 20)
+        Me.Label9.TabIndex = 31
+        Me.Label9.Text = "-"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label10
+        '
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(275, 16)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(150, 20)
+        Me.Label10.TabIndex = 32
+        Me.Label10.Text = "-"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'CMD_Read_Inputs
+        '
+        Me.CMD_Read_Inputs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CMD_Read_Inputs.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.CMD_Read_Inputs.Location = New System.Drawing.Point(204, 16)
+        Me.CMD_Read_Inputs.Name = "CMD_Read_Inputs"
+        Me.CMD_Read_Inputs.Size = New System.Drawing.Size(65, 57)
+        Me.CMD_Read_Inputs.TabIndex = 30
+        Me.CMD_Read_Inputs.Text = "READ PLC"
+        Me.CMD_Read_Inputs.UseVisualStyleBackColor = True
+        Me.CMD_Read_Inputs.Visible = False
         '
         'frmMain
         '
@@ -598,7 +648,10 @@ Partial Class frmMain
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Barcode_Comm As IO.Ports.SerialPort
     Friend WithEvents RFID_Comm As IO.Ports.SerialPort
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label9 As Label
+    Friend WithEvents Text2 As TextBox
+    Friend WithEvents Label12 As Label
     Friend WithEvents Cmd_Refresh As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents CMD_Read_Inputs As Button
 End Class
