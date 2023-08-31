@@ -20,7 +20,7 @@ Module modReadWrite
 		'    WriteINI
 		'End If
 
-		FileOpen(Fnum, My.Application.Info.DirectoryPath & "\Config.ini", OpenMode.Input)
+		FileOpen(Fnum, Filename, OpenMode.Input)
 
 		Do While Not EOF(Fnum)
 

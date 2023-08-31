@@ -14,11 +14,14 @@ Public Class frmMain
         SlideCount = 27
         Timer2.Enabled = True
 
-        If Dir(My.Application.Info.DirectoryPath & "\Config.INI") = "" Then 'This is to initalize the program during start up
+        Dim fullPath As String = System.AppDomain.CurrentDomain.BaseDirectory
+        Dim projectFolder As String = fullPath.Replace("\XCS-12\bin\Debug\", "").Replace("\XCS-12\bin\Release\", "")
+
+        If Dir(projectFolder & "\Config\Config.INI") = "" Then 'This is to initalize the program during start up
             MsgBox("Config.INI is missing")
             End
         End If
-        ReadINI(My.Application.Info.DirectoryPath & "\Config.INI")
+        ReadINI(projectFolder & "\Config\Config.INI")
 
         GetLastConfig()
         'Modbus
