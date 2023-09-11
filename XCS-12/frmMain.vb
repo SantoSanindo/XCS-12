@@ -493,7 +493,7 @@ ErrorHandler:
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
         Image2.Image = Image.FromFile(INISLIDEPATH & "Slide" & SlideCount & ".JPG")
         SlideCount = SlideCount + 1
-        If SlideCount = 30 Then SlideCount = 27
+        If SlideCount = 31 Then SlideCount = 27
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
